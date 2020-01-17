@@ -1,6 +1,12 @@
+require 'pg_search'
+
 class Faq < ActiveRecord::Base
+  include PgSearch
+
   validates :question, :answer, presence: true
 
   has_many :faq_hashtags
   has_many :hashtags, through: :faq_hashtags
+
+  pg_search_scope :search, against: [:question, :answer]
 end
