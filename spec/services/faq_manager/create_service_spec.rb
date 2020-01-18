@@ -3,7 +3,7 @@ require_relative './../../spec_helper.rb'
 describe FaqManager::CreateService do
   before do
     @question = FFaker::Lorem.sentence
-    @answer = FFaker::Lorem.sentence
+    @answer   = FFaker::Lorem.sentence
     @hashtags = "#{FFaker::Lorem.word}, #{FFaker::Lorem.word}"
   end
 

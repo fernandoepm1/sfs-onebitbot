@@ -1,3 +1,5 @@
+require_relative './../application_service.rb'
+
 module FaqManager
   class ListService < ApplicationService
     def initialize(params, action)

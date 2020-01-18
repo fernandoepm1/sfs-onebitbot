@@ -8,6 +8,7 @@ gem 'pg'
 gem 'pg_search', '~> 2.0.1'
 gem 'database_cleaner'
 gem 'factory_bot'
+gem 'byebug'
 gem 'ffaker'
 gem 'rubocop', require: false
 gem 'slim', '~> 3.0', '>= 3.0.6'

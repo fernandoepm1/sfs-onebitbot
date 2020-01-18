@@ -21,3 +21,16 @@ configure :development do
     password: ''
   }
 end
+
+configure :production do
+  db = URI.parse(ENV['DATABASE_URL'] || 'postgres:///postgres/onebitbot_production')
+
+  set :database, {
+    adapter:  'postgresql',
+    encoding: 'utf8',
+    database: db.path[1..-1],
+    host:     db.host,
+    username: db.user,
+    password: db.password,
+  }
+end
