@@ -3,9 +3,9 @@ require_relative './../application_service.rb'
 module FaqManager
   class CreateService < ApplicationService
     def initialize(params)
-      @question = params[:question]
-      @answer   = params[:answer]
-      @hashtags = params[:hashtags]
+      @question = params['question']
+      @answer   = params['answer']
+      @hashtags = params['hashtags']
     end
 
     def call

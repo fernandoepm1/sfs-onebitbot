@@ -3,7 +3,7 @@ require_relative './../application_service.rb'
 module FaqManager
   class RemoveService < ApplicationService
     def initialize(params)
-      @id = params[:id]
+      @id = params['id']
     end
 
     def call
