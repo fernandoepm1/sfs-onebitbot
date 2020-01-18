@@ -7,7 +7,7 @@ module FaqManager
     end
 
     def call
-      faq = Faq.find(@id)
+      faq = Faq.where(id: @id).last
       return 'Question not found, check id.' if faq.nil?
 
       Faq.transaction do
