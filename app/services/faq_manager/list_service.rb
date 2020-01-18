@@ -2,9 +2,9 @@ require_relative './../application_service.rb'
 
 module FaqManager
   class ListService < ApplicationService
-    def initialize(params, action)
-      @query  = params[:query]
+    def initialize(action, params)
       @action = action
+      @query  = params[:query]
     end
 
     def call

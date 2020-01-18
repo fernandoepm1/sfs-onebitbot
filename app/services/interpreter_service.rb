@@ -1,14 +1,14 @@
-class InterpreterService < ApplicationService
-  def call(action, params)
+class InterpreterService
+  def self.call(action, params)
     case action
     when 'create'
       FaqManager::CreateService.call(params)
     when 'list', 'search', 'search_by_hashtag'
-      FaqManager::ListService.call(params, action)
+      FaqManager::ListService.call(action, params)
     when 'remove'
       FaqManager::RemoveService.call(params)
     when 'help'
-      FaqManager::HelpService.call(params)
+      FaqManager::HelpService.call
     else
       'Come again?'
     end
