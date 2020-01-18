@@ -19,14 +19,9 @@ class App < Sinatra::Base
   end
 
   post '/webhook' do
-    result = @request_payload['queryResult'] if @request_payload['queryResult'].present?
-
-    response =
-      if result['contexts'].present?
-        InterpreterService.call(result['action'], result['contexts'][0]['parameters'])
-      else
-        InterpreterService.call(result['action'], result['parameters'])
-      end
+    request.body.rewind
+    result = JSON.parse(request.body.read)['queryResult']
+    response = InterpreterService.call(result['action'], result['parameters'])
 
     content_type :json, charset: 'utf-8'
     {
