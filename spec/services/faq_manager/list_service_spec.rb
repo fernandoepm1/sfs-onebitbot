@@ -4,21 +4,25 @@ describe FaqManager::ListService do
   describe '#call' do
     context 'list command' do
       context 'no faqs in database' do
-        response = FaqManager::ListService.call({}, 'list')
+        it 'gives not found message' do
+          response = FaqManager::ListService.call({}, 'list')
 
-        expect(response).to match("No faqs were found.")
+          expect(response).to match("No faqs were found.")
+        end
       end
 
       context 'two faqs in database' do
-        faq1 = create(:faq)
-        faq2 = create(:faq)
+        it 'show all faqs' do
+          faq1 = create(:faq)
+          faq2 = create(:faq)
 
-        response = FaqManager::ListService.call({}, 'list')
+          response = FaqManager::ListService.call({}, 'list')
 
-        expect(response).to match(faq1.question)
-        expect(response).to match(faq1.answer)
-        expect(response).to match(faq2.question)
-        expect(response).to match(faq2.answer)
+          expect(response).to match(faq1.question)
+          expect(response).to match(faq1.answer)
+          expect(response).to match(faq2.question)
+          expect(response).to match(faq2.answer)
+        end
       end
     end
 
