@@ -9,17 +9,13 @@ Dir['./app/models/*.rb'].each { |file| require file }
 Dir['./app/services/**/*.rb'].each { |file| require file }
 
 class App < Sinatra::Base
-  before do
-    request.body.rewind
-    @request_payload = JSON.parse(request.body.read)
-  end
-
   get '/' do
     'Hello World!'
   end
 
   post '/webhook' do
-    result = @request_payload['queryResult'] if @request_payload['queryResult'].present?
+    request.body.rewind
+    result = JSON.parse(request.body.read)['queryResult']
 
     response =
       if result['contexts'].present?
