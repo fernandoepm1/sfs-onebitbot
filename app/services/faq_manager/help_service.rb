@@ -1,8 +1,6 @@
-require_relative './../application_service.rb'
-
 module FaqManager
-  class HelpService < ApplicationService
-    def call
+  class HelpService
+    def self.call
       response  = "*Meus comandos* \n\n"
       response += "help\n"
       response += "`Lista de comandos que eu conheço`\n\n"
