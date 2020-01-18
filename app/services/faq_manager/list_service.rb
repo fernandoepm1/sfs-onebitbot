@@ -4,7 +4,7 @@ module FaqManager
   class ListService < ApplicationService
     def initialize(action, params)
       @action = action
-      @query  = params[:query]
+      @query  = params['query']
     end
 
     def call
